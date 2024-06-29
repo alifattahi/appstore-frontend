@@ -446,6 +446,7 @@ function PlasmicDeploy__RenderFunc(props: {
                     displayMinHeight={"0"}
                     displayMinWidth={"0"}
                     displayWidth={"auto"}
+                    height={"100"}
                     loading={"lazy"}
                     src={(() => {
                       try {
@@ -467,6 +468,7 @@ function PlasmicDeploy__RenderFunc(props: {
                         throw e;
                       }
                     })()}
+                    width={"100"}
                   />
 
                   <Stack__
