@@ -16,5 +16,6 @@
 12.  در پنجره باز شده، مقداری با همین فرمت وارد کنید. custom-doamin]/plasmic-host] به جای [custom-domain] همان دامنه ای در مرحله 7 وارد کرده اید بنویسید. مثلا www.paziresh24.com/plasmic-host
 
 
+
 </div>
 
