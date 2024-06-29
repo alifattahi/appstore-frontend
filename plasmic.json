@@ -997,6 +997,30 @@
           "name": "Splunk",
           "displayName": "Splunk",
           "componentImportPath": "@/fragment/splunk"
+        },
+        {
+          "id": "zGiJieTk-Ck3",
+          "name": "Select",
+          "displayName": "Select",
+          "componentImportPath": "@/fragment/components/select"
+        },
+        {
+          "id": "pwmn2zAXfw6s",
+          "name": "Input",
+          "displayName": "Input",
+          "componentImportPath": "@/fragment/components/input"
+        },
+        {
+          "id": "2SWcOpy6oMr_",
+          "name": "Switch",
+          "displayName": "Switch",
+          "componentImportPath": "@/fragment/components/switch"
+        },
+        {
+          "id": "iWDgO9aYVEM4",
+          "name": "ApiRequest",
+          "displayName": "ApiRequest",
+          "componentImportPath": "@/fragment/components/api-request"
         }
       ],
       "customFunctions": []

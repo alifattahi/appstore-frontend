@@ -198,6 +198,7 @@ function PlasmicDialog__RenderFunc(props: {
       defaultOpen={false}
       onOpenChange={generateStateOnChangeProp($state, ["dialog", "open"])}
       open={generateStateValueProp($state, ["dialog", "open"])}
+      overlayClassName={classNames({ [sty["pcls_dZd6D3YI1R0b"]]: true })}
       themeResetClass={classNames(
         projectcss.root_reset,
         projectcss.plasmic_default_styles,
@@ -246,6 +247,7 @@ function PlasmicDialog__RenderFunc(props: {
           data-plasmic-override={overrides.freeBox}
           hasGap={true}
           className={classNames(projectcss.all, sty.freeBox)}
+          dir={"rtl"}
         >
           <DialogTitle
             data-plasmic-name={"dialogTitle"}

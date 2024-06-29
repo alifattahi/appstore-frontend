@@ -61,9 +61,8 @@ import {
 
 import Button from "../../Button"; // plasmic-import: SeN-_u-Bb4MZ/component
 import { DataFetcher } from "@plasmicpkgs/plasmic-query";
-import TextInput from "../../TextInput"; // plasmic-import: 20BEVE161Tub/component
-import Select from "../../Select"; // plasmic-import: IPsHMEFnMbCe/component
-import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
+import { Input } from "@/fragment/components/input"; // plasmic-import: pwmn2zAXfw6s/codeComponent
+import { Select } from "@/fragment/components/select"; // plasmic-import: zGiJieTk-Ck3/codeComponent
 
 import { useScreenVariants as useScreenVariantshFSeMrw7Uuy } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: h_fSEMrw7Uuy/globalVariant
 
@@ -76,7 +75,6 @@ import sty from "./PlasmicDeploy.module.css"; // plasmic-import: o8zUWsy5LVXF/cs
 
 import ChecksvgIcon from "./icons/PlasmicIcon__Checksvg"; // plasmic-import: LwBmQ7p7bmsl/icon
 import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: Uv6mWKVW5aWf/icon
-import SearchsvgIcon from "./icons/PlasmicIcon__Searchsvg"; // plasmic-import: akcTM9Ae0af4/icon
 import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: jyFOmxNthMrg/icon
 
 createPlasmicElementProxy;
@@ -96,15 +94,15 @@ export type PlasmicDeploy__OverridesType = {
   appCatalogFetcher?: Flex__<typeof DataFetcher>;
   appImage?: Flex__<typeof PlasmicImg__>;
   httpsappstoredarkubeapphmvrToken?: Flex__<"a"> & Partial<LinkProps>;
-  tokenInput?: Flex__<typeof TextInput>;
+  tokenInput?: Flex__<typeof Input>;
   orgFetcher?: Flex__<typeof DataFetcher>;
   orgSelect?: Flex__<typeof Select>;
   zoneFetcher?: Flex__<typeof DataFetcher>;
   zoneSelect?: Flex__<typeof Select>;
   nsFetcher?: Flex__<typeof DataFetcher>;
   nameSpaceSelect?: Flex__<typeof Select>;
-  appNameInput?: Flex__<typeof TextInput>;
-  domainInput?: Flex__<typeof TextInput>;
+  appNameInput?: Flex__<typeof Input>;
+  domainInput?: Flex__<typeof Input>;
   httpRestApiFetcher?: Flex__<typeof DataFetcher>;
   domainText?: Flex__<"div">;
   installButton?: Flex__<typeof Button>;
@@ -146,42 +144,6 @@ function PlasmicDeploy__RenderFunc(props: {
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
-        path: "tokenInput.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ``
-      },
-      {
-        path: "appNameInput.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
-      },
-      {
-        path: "zoneSelect.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "nameSpaceSelect.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "orgSelect.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "domainInput.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ``
-      },
-      {
         path: "organizationName",
         type: "private",
         variableType: "text",
@@ -204,6 +166,60 @@ function PlasmicDeploy__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "nameSpaceSelect.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "nameSpaceSelect.open",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "zoneSelect.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "zoneSelect.open",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "orgSelect.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "orgSelect.open",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "tokenInput.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "appNameInput.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "domainInput.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]
@@ -453,44 +469,61 @@ function PlasmicDeploy__RenderFunc(props: {
                     })()}
                   />
 
-                  <PlasmicLink__
-                    data-plasmic-name={"httpsappstoredarkubeapphmvrToken"}
-                    data-plasmic-override={
-                      overrides.httpsappstoredarkubeapphmvrToken
-                    }
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.a,
-                      projectcss.__wab_text,
-                      sty.httpsappstoredarkubeapphmvrToken
-                    )}
-                    component={Link}
-                    href={"https://appstore.darkube.app/hmvr-token"}
-                    platform={"nextjs"}
+                  <Stack__
+                    as={"div"}
+                    hasGap={true}
+                    className={classNames(projectcss.all, sty.freeBox__wabpG)}
                   >
-                    {
-                      "\u062a\u0648\u06a9\u0646 \u0647\u0645\u0631\u0648\u0634 ( \u0631\u0627\u0647\u0646\u0645\u0627 )"
-                    }
-                  </PlasmicLink__>
-                  <TextInput
-                    data-plasmic-name={"tokenInput"}
-                    data-plasmic-override={overrides.tokenInput}
-                    className={classNames("__wab_instance", sty.tokenInput)}
-                    name={"TokenInput"}
-                    onChange={(...eventArgs) => {
-                      generateStateOnChangeProp($state, [
+                    <Stack__
+                      as={"div"}
+                      hasGap={true}
+                      className={classNames(projectcss.all, sty.freeBox__mMFeU)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__bLn2
+                        )}
+                      >
+                        {
+                          "\u062a\u0648\u06a9\u0646 \u0647\u0645\u0631\u0648\u0634"
+                        }
+                      </div>
+                      <PlasmicLink__
+                        data-plasmic-name={"httpsappstoredarkubeapphmvrToken"}
+                        data-plasmic-override={
+                          overrides.httpsappstoredarkubeapphmvrToken
+                        }
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.a,
+                          projectcss.__wab_text,
+                          sty.httpsappstoredarkubeapphmvrToken
+                        )}
+                        component={Link}
+                        href={"https://appstore.darkube.app/hmvr-token"}
+                        platform={"nextjs"}
+                      >
+                        {"( \u0631\u0627\u0647\u0646\u0645\u0627 )"}
+                      </PlasmicLink__>
+                    </Stack__>
+                    <Input
+                      data-plasmic-name={"tokenInput"}
+                      data-plasmic-override={overrides.tokenInput}
+                      className={classNames("__wab_instance", sty.tokenInput)}
+                      onChange={generateStateOnChangeProp($state, [
                         "tokenInput",
                         "value"
-                      ])((e => e.target?.value).apply(null, eventArgs));
-                    }}
-                    placeholder={"\u062a\u0648\u06a9\u0646"}
-                    required={true}
-                    value={
-                      generateStateValueProp($state, ["tokenInput", "value"]) ??
-                      ""
-                    }
-                  />
-
+                      ])}
+                      placeholder={``}
+                      type={"password"}
+                      value={generateStateValueProp($state, [
+                        "tokenInput",
+                        "value"
+                      ])}
+                    />
+                  </Stack__>
                   {(() => {
                     try {
                       return (
@@ -562,7 +595,15 @@ function PlasmicDeploy__RenderFunc(props: {
                       })()}
                       loadingDisplay={
                         <DataCtxReader__>
-                          {$ctx => "Loading..."}
+                          {$ctx => (
+                            <Icon3Icon
+                              className={classNames(
+                                projectcss.all,
+                                sty.svg__fpOpc
+                              )}
+                              role={"img"}
+                            />
+                          )}
                         </DataCtxReader__>
                       }
                       method={"POST"}
@@ -574,7 +615,14 @@ function PlasmicDeploy__RenderFunc(props: {
                     >
                       <DataCtxReader__>
                         {$ctx => (
-                          <React.Fragment>
+                          <Stack__
+                            as={"div"}
+                            hasGap={true}
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__gTxis
+                            )}
+                          >
                             <div
                               className={classNames(
                                 projectcss.all,
@@ -584,110 +632,102 @@ function PlasmicDeploy__RenderFunc(props: {
                             >
                               {"\u0633\u0627\u0632\u0645\u0627\u0646"}
                             </div>
-                            {(() => {
-                              try {
-                                return true;
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return true;
-                                }
-                                throw e;
-                              }
-                            })() ? (
-                              <Select
-                                data-plasmic-name={"orgSelect"}
-                                data-plasmic-override={overrides.orgSelect}
-                                className={classNames(
-                                  "__wab_instance",
-                                  sty.orgSelect
-                                )}
-                                onChange={async (...eventArgs: any) => {
-                                  ((...eventArgs) => {
-                                    generateStateOnChangeProp($state, [
-                                      "orgSelect",
-                                      "value"
-                                    ])(eventArgs[0]);
-                                  }).apply(null, eventArgs);
-                                  (async value => {
-                                    const $steps = {};
-
-                                    $steps["updateOrganizationName"] = true
-                                      ? (() => {
-                                          const actionArgs = {
-                                            variable: {
-                                              objRoot: $state,
-                                              variablePath: ["organizationName"]
-                                            },
-                                            operation: 0,
-                                            value: $ctx.OrgData.find(
-                                              org =>
-                                                org.id ===
-                                                parseInt($state.orgSelect.value)
-                                            ).name
-                                          };
-                                          return (({
-                                            variable,
-                                            value,
-                                            startIndex,
-                                            deleteCount
-                                          }) => {
-                                            if (!variable) {
-                                              return;
-                                            }
-                                            const { objRoot, variablePath } =
-                                              variable;
-
-                                            $stateSet(
-                                              objRoot,
-                                              variablePath,
-                                              value
-                                            );
-                                            return value;
-                                          })?.apply(null, [actionArgs]);
-                                        })()
-                                      : undefined;
-                                    if (
-                                      $steps["updateOrganizationName"] !=
-                                        null &&
-                                      typeof $steps[
-                                        "updateOrganizationName"
-                                      ] === "object" &&
-                                      typeof $steps["updateOrganizationName"]
-                                        .then === "function"
-                                    ) {
-                                      $steps["updateOrganizationName"] =
-                                        await $steps["updateOrganizationName"];
-                                    }
-                                  }).apply(null, eventArgs);
-                                }}
-                                options={(() => {
-                                  try {
-                                    return $ctx.OrgData.map(org => ({
-                                      value: org.id,
-                                      label: org.name
-                                    }));
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return [];
-                                    }
-                                    throw e;
-                                  }
-                                })()}
-                                placeholder={"Select\u2026"}
-                                value={generateStateValueProp($state, [
+                            <Select
+                              data-plasmic-name={"orgSelect"}
+                              data-plasmic-override={overrides.orgSelect}
+                              onChange={async (...eventArgs: any) => {
+                                generateStateOnChangeProp($state, [
                                   "orgSelect",
                                   "value"
-                                ])}
-                              />
-                            ) : null}
-                          </React.Fragment>
+                                ]).apply(null, eventArgs);
+                                (async value => {
+                                  const $steps = {};
+
+                                  $steps["updateOrganizationName"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          variable: {
+                                            objRoot: $state,
+                                            variablePath: ["organizationName"]
+                                          },
+                                          operation: 0,
+                                          value: $ctx.OrgData.find(
+                                            org =>
+                                              org.id ===
+                                              parseInt($state.orgSelect.value)
+                                          ).name
+                                        };
+                                        return (({
+                                          variable,
+                                          value,
+                                          startIndex,
+                                          deleteCount
+                                        }) => {
+                                          if (!variable) {
+                                            return;
+                                          }
+                                          const { objRoot, variablePath } =
+                                            variable;
+
+                                          $stateSet(
+                                            objRoot,
+                                            variablePath,
+                                            value
+                                          );
+                                          return value;
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["updateOrganizationName"] != null &&
+                                    typeof $steps["updateOrganizationName"] ===
+                                      "object" &&
+                                    typeof $steps["updateOrganizationName"]
+                                      .then === "function"
+                                  ) {
+                                    $steps["updateOrganizationName"] =
+                                      await $steps["updateOrganizationName"];
+                                  }
+                                }).apply(null, eventArgs);
+                              }}
+                              onOpenChange={generateStateOnChangeProp($state, [
+                                "orgSelect",
+                                "open"
+                              ])}
+                              open={generateStateValueProp($state, [
+                                "orgSelect",
+                                "open"
+                              ])}
+                              options={(() => {
+                                try {
+                                  return $ctx.OrgData.map(org => ({
+                                    value: org.id,
+                                    label: org.name
+                                  }));
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return undefined;
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                              placeholder={
+                                "\u0633\u0627\u0632\u0645\u0627\u0646"
+                              }
+                              triggerClassName={classNames(
+                                "__wab_instance",
+                                sty.orgSelect
+                              )}
+                              value={generateStateValueProp($state, [
+                                "orgSelect",
+                                "value"
+                              ])}
+                            />
+                          </Stack__>
                         )}
                       </DataCtxReader__>
                     </DataFetcher>
@@ -812,16 +852,18 @@ function PlasmicDeploy__RenderFunc(props: {
                             <Select
                               data-plasmic-name={"zoneSelect"}
                               data-plasmic-override={overrides.zoneSelect}
-                              className={classNames(
-                                "__wab_instance",
-                                sty.zoneSelect
-                              )}
-                              onChange={(...eventArgs) => {
-                                generateStateOnChangeProp($state, [
-                                  "zoneSelect",
-                                  "value"
-                                ])(eventArgs[0]);
-                              }}
+                              onChange={generateStateOnChangeProp($state, [
+                                "zoneSelect",
+                                "value"
+                              ])}
+                              onOpenChange={generateStateOnChangeProp($state, [
+                                "zoneSelect",
+                                "open"
+                              ])}
+                              open={generateStateValueProp($state, [
+                                "zoneSelect",
+                                "open"
+                              ])}
                               options={(() => {
                                 try {
                                   return $ctx.fetchedData.map(item => ({
@@ -834,12 +876,18 @@ function PlasmicDeploy__RenderFunc(props: {
                                     e?.plasmicType ===
                                       "PlasmicUndefinedDataError"
                                   ) {
-                                    return [];
+                                    return undefined;
                                   }
                                   throw e;
                                 }
                               })()}
-                              placeholder={"Select\u2026"}
+                              placeholder={
+                                "\u062f\u06cc\u062a\u0627\u0633\u0646\u062a\u0631"
+                              }
+                              triggerClassName={classNames(
+                                "__wab_instance",
+                                sty.zoneSelect
+                              )}
                               value={generateStateValueProp($state, [
                                 "zoneSelect",
                                 "value"
@@ -891,7 +939,19 @@ function PlasmicDeploy__RenderFunc(props: {
                           throw e;
                         }
                       })()}
-                      loadingDisplay={null}
+                      loadingDisplay={
+                        <DataCtxReader__>
+                          {$ctx => (
+                            <Icon3Icon
+                              className={classNames(
+                                projectcss.all,
+                                sty.svg___9Wbuj
+                              )}
+                              role={"img"}
+                            />
+                          )}
+                        </DataCtxReader__>
+                      }
                       method={"GET"}
                       noLayout={false}
                       url={(() => {
@@ -935,16 +995,18 @@ function PlasmicDeploy__RenderFunc(props: {
                             <Select
                               data-plasmic-name={"nameSpaceSelect"}
                               data-plasmic-override={overrides.nameSpaceSelect}
-                              className={classNames(
-                                "__wab_instance",
-                                sty.nameSpaceSelect
-                              )}
-                              onChange={(...eventArgs) => {
-                                generateStateOnChangeProp($state, [
-                                  "nameSpaceSelect",
-                                  "value"
-                                ])(eventArgs[0]);
-                              }}
+                              onChange={generateStateOnChangeProp($state, [
+                                "nameSpaceSelect",
+                                "value"
+                              ])}
+                              onOpenChange={generateStateOnChangeProp($state, [
+                                "nameSpaceSelect",
+                                "open"
+                              ])}
+                              open={generateStateValueProp($state, [
+                                "nameSpaceSelect",
+                                "open"
+                              ])}
                               options={(() => {
                                 try {
                                   return $ctx.fetchedData.map(item => ({
@@ -957,12 +1019,18 @@ function PlasmicDeploy__RenderFunc(props: {
                                     e?.plasmicType ===
                                       "PlasmicUndefinedDataError"
                                   ) {
-                                    return [];
+                                    return undefined;
                                   }
                                   throw e;
                                 }
                               })()}
-                              placeholder={"Select\u2026"}
+                              placeholder={
+                                "\u0641\u0636\u0627\u06cc \u0646\u0627\u0645"
+                              }
+                              triggerClassName={classNames(
+                                "__wab_instance",
+                                sty.nameSpaceSelect
+                              )}
                               value={generateStateValueProp($state, [
                                 "nameSpaceSelect",
                                 "value"
@@ -986,56 +1054,41 @@ function PlasmicDeploy__RenderFunc(props: {
                       throw e;
                     }
                   })() ? (
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__nXGl2
-                      )}
+                    <Stack__
+                      as={"div"}
+                      hasGap={true}
+                      className={classNames(projectcss.all, sty.freeBox__nhHXx)}
                     >
-                      {
-                        "\u0646\u0627\u0645 \u0627\u067e\u0644\u06cc\u06a9\u06cc\u0634\u0646 (\u062d\u0631\u0648\u0641 \u0627\u0646\u06af\u0644\u06cc\u0633\u06cc \u0628\u062f\u0648\u0646 \u0641\u0627\u0635\u0644\u0647)"
-                      }
-                    </div>
-                  ) : null}
-                  {(() => {
-                    try {
-                      return $state.nameSpaceSelect.value != null;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return true;
-                      }
-                      throw e;
-                    }
-                  })() ? (
-                    <TextInput
-                      data-plasmic-name={"appNameInput"}
-                      data-plasmic-override={overrides.appNameInput}
-                      className={classNames("__wab_instance", sty.appNameInput)}
-                      onChange={(...eventArgs) => {
-                        generateStateOnChangeProp($state, [
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__nXGl2
+                        )}
+                      >
+                        {
+                          "\u0646\u0627\u0645 \u0627\u067e\u0644\u06cc\u06a9\u06cc\u0634\u0646 (\u062d\u0631\u0648\u0641 \u0627\u0646\u06af\u0644\u06cc\u0633\u06cc \u0628\u062f\u0648\u0646 \u0641\u0627\u0635\u0644\u0647)"
+                        }
+                      </div>
+                      <Input
+                        data-plasmic-name={"appNameInput"}
+                        data-plasmic-override={overrides.appNameInput}
+                        className={classNames(
+                          "__wab_instance",
+                          sty.appNameInput
+                        )}
+                        onChange={generateStateOnChangeProp($state, [
                           "appNameInput",
                           "value"
-                        ])((e => e.target?.value).apply(null, eventArgs));
-                      }}
-                      placeholder={"\u0646\u0627\u0645 \u0627\u067e"}
-                      required={false}
-                      startIcon={
-                        <SearchsvgIcon
-                          className={classNames(projectcss.all, sty.svg__hrstu)}
-                          role={"img"}
-                        />
-                      }
-                      value={
-                        generateStateValueProp($state, [
+                        ])}
+                        placeholder={"\u0646\u0627\u0645 \u0627\u067e"}
+                        type={"text"}
+                        value={generateStateValueProp($state, [
                           "appNameInput",
                           "value"
-                        ]) ?? ""
-                      }
-                    />
+                        ])}
+                      />
+                    </Stack__>
                   ) : null}
                   {(() => {
                     try {
@@ -1050,216 +1103,206 @@ function PlasmicDeploy__RenderFunc(props: {
                       throw e;
                     }
                   })() ? (
-                    <div
+                    <Stack__
+                      as={"div"}
+                      hasGap={true}
                       className={classNames(
                         projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___1QMjK
+                        sty.freeBox___8LIzJ
                       )}
                     >
-                      {
-                        "\u0646\u0627\u0645 \u0632\u06cc\u0631 \u062f\u0627\u0645\u0646\u0647 \u062f\u0627\u0631\u06a9\u0648\u0628"
-                      }
-                    </div>
-                  ) : null}
-                  {(() => {
-                    try {
-                      return $state.appNameInput.value.length > 1;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return true;
-                      }
-                      throw e;
-                    }
-                  })() ? (
-                    <TextInput
-                      data-plasmic-name={"domainInput"}
-                      data-plasmic-override={overrides.domainInput}
-                      className={classNames("__wab_instance", sty.domainInput)}
-                      onChange={async (...eventArgs: any) => {
-                        ((...eventArgs) => {
-                          generateStateOnChangeProp($state, [
-                            "domainInput",
-                            "value"
-                          ])((e => e.target?.value).apply(null, eventArgs));
-                        }).apply(null, eventArgs);
-                        (async event => {
-                          const $steps = {};
-                        }).apply(null, eventArgs);
-                      }}
-                      placeholder={
-                        "\u0646\u0627\u0645 \u062f\u0627\u0645\u0646\u0647"
-                      }
-                      value={
-                        generateStateValueProp($state, [
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text___1QMjK
+                        )}
+                      >
+                        {
+                          "\u0646\u0627\u0645 \u0632\u06cc\u0631 \u062f\u0627\u0645\u0646\u0647 \u062f\u0627\u0631\u06a9\u0648\u0628"
+                        }
+                      </div>
+                      <Input
+                        data-plasmic-name={"domainInput"}
+                        data-plasmic-override={overrides.domainInput}
+                        className={classNames(
+                          "__wab_instance",
+                          sty.domainInput
+                        )}
+                        onChange={generateStateOnChangeProp($state, [
                           "domainInput",
                           "value"
-                        ]) ?? ""
-                      }
-                    />
-                  ) : null}
-                  {(() => {
-                    try {
-                      return $state.appNameInput.value.length > 1;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return true;
-                      }
-                      throw e;
-                    }
-                  })() ? (
-                    <DataFetcher
-                      data-plasmic-name={"httpRestApiFetcher"}
-                      data-plasmic-override={overrides.httpRestApiFetcher}
-                      body={undefined}
-                      className={classNames(
-                        "__wab_instance",
-                        sty.httpRestApiFetcher
-                      )}
-                      dataName={"fetchedData"}
-                      errorDisplay={
-                        <DataCtxReader__>
-                          {$ctx => "Error fetching data"}
-                        </DataCtxReader__>
-                      }
-                      errorName={"fetchError"}
-                      headers={(() => {
-                        try {
-                          return {
-                            "Content-Type": "application/json",
-                            Accept: "application/json",
-                            token: $state.tokenInput.value
-                          };
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
+                        ])}
+                        placeholder={
+                          "\u0646\u0627\u0645 \u0632\u06cc\u0631 \u062f\u0627\u0645\u0646\u0647"
+                        }
+                        type={"text"}
+                        value={generateStateValueProp($state, [
+                          "domainInput",
+                          "value"
+                        ])}
+                      />
+
+                      <DataFetcher
+                        data-plasmic-name={"httpRestApiFetcher"}
+                        data-plasmic-override={overrides.httpRestApiFetcher}
+                        body={undefined}
+                        className={classNames(
+                          "__wab_instance",
+                          sty.httpRestApiFetcher
+                        )}
+                        dataName={"fetchedData"}
+                        errorDisplay={
+                          <DataCtxReader__>
+                            {$ctx => "Error fetching data"}
+                          </DataCtxReader__>
+                        }
+                        errorName={"fetchError"}
+                        headers={(() => {
+                          try {
                             return {
                               "Content-Type": "application/json",
-                              Accept: "application/json"
+                              Accept: "application/json",
+                              token: $state.tokenInput.value
                             };
-                          }
-                          throw e;
-                        }
-                      })()}
-                      loadingDisplay={
-                        <DataCtxReader__>
-                          {$ctx => "Loading..."}
-                        </DataCtxReader__>
-                      }
-                      method={"GET"}
-                      noLayout={false}
-                      queryKey={(() => {
-                        try {
-                          return undefined;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return undefined;
-                          }
-                          throw e;
-                        }
-                      })()}
-                      url={(() => {
-                        try {
-                          return (
-                            "https://fti-workflow.paziresh24.com/webhook/hmvr/domain?domain=" +
-                            $state.domainInput.value +
-                            "&x-organization=" +
-                            $state.organizationName
-                          );
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return undefined;
-                          }
-                          throw e;
-                        }
-                      })()}
-                    >
-                      <DataCtxReader__>
-                        {$ctx =>
-                          (() => {
-                            try {
-                              return $state.domainInput.value.length > 0;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return true;
-                              }
-                              throw e;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return {
+                                "Content-Type": "application/json",
+                                Accept: "application/json"
+                              };
                             }
-                          })() ? (
-                            <div
-                              data-plasmic-name={"domainText"}
-                              data-plasmic-override={overrides.domainText}
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.domainText
-                              )}
-                              color={``}
-                              style={(() => {
-                                try {
-                                  return {
-                                    color:
-                                      $ctx.fetchedData[0].is_valid === true
-                                        ? "#00C503"
-                                        : "#FF2D00"
-                                  };
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return { color: "black" };
-                                  }
-                                  throw e;
+                            throw e;
+                          }
+                        })()}
+                        loadingDisplay={
+                          <DataCtxReader__>
+                            {$ctx => (
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text___9Be3P
+                                )}
+                              >
+                                {
+                                  "\u062f\u0631\u062d\u0627\u0644 \u0628\u0631\u0631\u0633\u06cc ..."
                                 }
-                              })()}
-                            >
-                              <React.Fragment>
-                                {(() => {
+                              </div>
+                            )}
+                          </DataCtxReader__>
+                        }
+                        method={"GET"}
+                        noLayout={false}
+                        previewSpinner={false}
+                        queryKey={(() => {
+                          try {
+                            return undefined;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()}
+                        url={(() => {
+                          try {
+                            return (
+                              "https://fti-workflow.paziresh24.com/webhook/hmvr/domain?domain=" +
+                              $state.domainInput.value +
+                              "&x-organization=" +
+                              $state.organizationName
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()}
+                      >
+                        <DataCtxReader__>
+                          {$ctx =>
+                            (() => {
+                              try {
+                                return $state.domainInput.value.length > 0;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return true;
+                                }
+                                throw e;
+                              }
+                            })() ? (
+                              <div
+                                data-plasmic-name={"domainText"}
+                                data-plasmic-override={overrides.domainText}
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.domainText
+                                )}
+                                color={``}
+                                style={(() => {
                                   try {
-                                    return (
-                                      "https://" +
-                                      $state.domainInput.value +
-                                      ".darkube.app " +
-                                      ($ctx.fetchedData[0].is_valid === true
-                                        ? "قابل ثبت است"
-                                        : "قابل ثبت نیست")
-                                    );
+                                    return {
+                                      color:
+                                        $ctx.fetchedData[0].is_valid === true
+                                          ? "#00C503"
+                                          : "#FF2D00"
+                                    };
                                   } catch (e) {
                                     if (
                                       e instanceof TypeError ||
                                       e?.plasmicType ===
                                         "PlasmicUndefinedDataError"
                                     ) {
-                                      return "";
+                                      return { color: "black" };
                                     }
                                     throw e;
                                   }
                                 })()}
-                              </React.Fragment>
-                            </div>
-                          ) : null
-                        }
-                      </DataCtxReader__>
-                    </DataFetcher>
+                              >
+                                <React.Fragment>
+                                  {(() => {
+                                    try {
+                                      return (
+                                        "https://" +
+                                        $state.domainInput.value +
+                                        ".darkube.app " +
+                                        ($ctx.fetchedData[0].is_valid === true
+                                          ? "قابل ثبت است"
+                                          : "قابل ثبت نیست")
+                                      );
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return "";
+                                      }
+                                      throw e;
+                                    }
+                                  })()}
+                                </React.Fragment>
+                              </div>
+                            ) : null
+                          }
+                        </DataCtxReader__>
+                      </DataFetcher>
+                    </Stack__>
                   ) : null}
                   <Button
                     data-plasmic-name={"installButton"}
@@ -1268,7 +1311,7 @@ function PlasmicDeploy__RenderFunc(props: {
                     isDisabled={(() => {
                       try {
                         return (
-                          $state.appNameInput.value.length < 2 ||
+                          $state.domainInput.value.length < 2 ||
                           $state.installing === true
                         );
                       } catch (e) {
@@ -1567,15 +1610,15 @@ type NodeDefaultElementType = {
   appCatalogFetcher: typeof DataFetcher;
   appImage: typeof PlasmicImg__;
   httpsappstoredarkubeapphmvrToken: "a";
-  tokenInput: typeof TextInput;
+  tokenInput: typeof Input;
   orgFetcher: typeof DataFetcher;
   orgSelect: typeof Select;
   zoneFetcher: typeof DataFetcher;
   zoneSelect: typeof Select;
   nsFetcher: typeof DataFetcher;
   nameSpaceSelect: typeof Select;
-  appNameInput: typeof TextInput;
-  domainInput: typeof TextInput;
+  appNameInput: typeof Input;
+  domainInput: typeof Input;
   httpRestApiFetcher: typeof DataFetcher;
   domainText: "div";
   installButton: typeof Button;
