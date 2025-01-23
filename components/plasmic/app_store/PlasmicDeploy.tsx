@@ -240,7 +240,7 @@ function PlasmicDeploy__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           (() => {
             try {
-              return $ctx.params.license ? $ctx.params.license : "";
+              return $ctx.query.license ? $ctx.query.license : "";
             } catch (e) {
               if (
                 e instanceof TypeError ||
@@ -573,8 +573,8 @@ function PlasmicDeploy__RenderFunc(props: {
                               initFunc: ({ $props, $state, $queries }) =>
                                 (() => {
                                   try {
-                                    return $ctx.params.license
-                                      ? $ctx.params.license
+                                    return $ctx.query.license
+                                      ? $ctx.query.license
                                       : "";
                                   } catch (e) {
                                     if (
