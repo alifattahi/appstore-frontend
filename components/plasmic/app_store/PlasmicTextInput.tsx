@@ -68,8 +68,8 @@ import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plas
 import projectcss from "./plasmic.module.css"; // plasmic-import: kE2m6SaQqQewvhrZdkGhrf/projectcss
 import sty from "./PlasmicTextInput.module.css"; // plasmic-import: 20BEVE161Tub/css
 
-import SearchsvgIcon from "./icons/PlasmicIcon__Searchsvg"; // plasmic-import: akcTM9Ae0af4/icon
-import ChecksvgIcon from "./icons/PlasmicIcon__Checksvg"; // plasmic-import: LwBmQ7p7bmsl/icon
+import SearchSvgIcon from "./icons/PlasmicIcon__SearchSvg"; // plasmic-import: akcTM9Ae0af4/icon
+import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: LwBmQ7p7bmsl/icon
 
 createPlasmicElementProxy;
 
@@ -182,7 +182,9 @@ function PlasmicTextInput__RenderFunc(props: {
         {
           placeholder: "Enter something…"
         },
-        props.args
+        Object.fromEntries(
+          Object.entries(props.args).filter(([_, v]) => v !== undefined)
+        )
       ),
     [props.args]
   );
@@ -302,7 +304,7 @@ function PlasmicTextInput__RenderFunc(props: {
       >
         {renderPlasmicSlot({
           defaultContents: (
-            <SearchsvgIcon
+            <SearchSvgIcon
               className={classNames(projectcss.all, sty.svg__fnTcN)}
               role={"img"}
             />
@@ -366,7 +368,7 @@ function PlasmicTextInput__RenderFunc(props: {
       >
         {renderPlasmicSlot({
           defaultContents: (
-            <ChecksvgIcon
+            <CheckSvgIcon
               className={classNames(projectcss.all, sty.svg___6Th8J)}
               role={"img"}
             />

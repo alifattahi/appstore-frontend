@@ -61,6 +61,7 @@ import {
 
 import Button from "../../Button"; // plasmic-import: SeN-_u-Bb4MZ/component
 import { DataFetcher } from "@plasmicpkgs/plasmic-query";
+import TextInput from "../../TextInput"; // plasmic-import: 20BEVE161Tub/component
 import { Input } from "@/fragment/components/input"; // plasmic-import: pwmn2zAXfw6s/codeComponent
 import { Select } from "@/fragment/components/select"; // plasmic-import: zGiJieTk-Ck3/codeComponent
 
@@ -73,8 +74,9 @@ import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plas
 import projectcss from "./plasmic.module.css"; // plasmic-import: kE2m6SaQqQewvhrZdkGhrf/projectcss
 import sty from "./PlasmicDeploy.module.css"; // plasmic-import: o8zUWsy5LVXF/css
 
-import ChecksvgIcon from "./icons/PlasmicIcon__Checksvg"; // plasmic-import: LwBmQ7p7bmsl/icon
+import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: LwBmQ7p7bmsl/icon
 import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: Uv6mWKVW5aWf/icon
+import SearchSvgIcon from "./icons/PlasmicIcon__SearchSvg"; // plasmic-import: akcTM9Ae0af4/icon
 import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: jyFOmxNthMrg/icon
 
 createPlasmicElementProxy;
@@ -93,7 +95,8 @@ export type PlasmicDeploy__OverridesType = {
   img?: Flex__<typeof PlasmicImg__>;
   appCatalogFetcher?: Flex__<typeof DataFetcher>;
   appImage?: Flex__<typeof PlasmicImg__>;
-  httpsappstoredarkubeapphmvrToken?: Flex__<"a"> & Partial<LinkProps>;
+  textlicense?: Flex__<typeof TextInput>;
+  httpsAppstoreDarkubeAppHmvrToken?: Flex__<"a"> & Partial<LinkProps>;
   tokenInput?: Flex__<typeof Input>;
   orgFetcher?: Flex__<typeof DataFetcher>;
   orgSelect?: Flex__<typeof Select>;
@@ -127,7 +130,16 @@ function PlasmicDeploy__RenderFunc(props: {
 }) {
   const { variants, overrides, forNode } = props;
 
-  const args = React.useMemo(() => Object.assign({}, props.args), [props.args]);
+  const args = React.useMemo(
+    () =>
+      Object.assign(
+        {},
+        Object.fromEntries(
+          Object.entries(props.args).filter(([_, v]) => v !== undefined)
+        )
+      ),
+    [props.args]
+  );
 
   const $props = {
     ...args,
@@ -220,6 +232,25 @@ function PlasmicDeploy__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "textlicense.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $ctx.params.license ? $ctx.params.license : "";
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -285,7 +316,7 @@ function PlasmicDeploy__RenderFunc(props: {
                 displayMinWidth={"0"}
                 displayWidth={"40px"}
                 src={{
-                  src: "/plasmic/app_store/images/appIconjpg.jpg",
+                  src: "/plasmic/app_store/images/appIconJpg.jpg",
                   fullWidth: 360,
                   fullHeight: 360,
                   aspectRatio: undefined
@@ -307,7 +338,7 @@ function PlasmicDeploy__RenderFunc(props: {
                     />
                   }
                   startIcon={
-                    <ChecksvgIcon
+                    <CheckSvgIcon
                       className={classNames(projectcss.all, sty.svg__awKn1)}
                       role={"img"}
                     />
@@ -334,7 +365,7 @@ function PlasmicDeploy__RenderFunc(props: {
                     />
                   }
                   startIcon={
-                    <ChecksvgIcon
+                    <CheckSvgIcon
                       className={classNames(projectcss.all, sty.svg__iwOt)}
                       role={"img"}
                     />
@@ -374,7 +405,7 @@ function PlasmicDeploy__RenderFunc(props: {
                       />
                     }
                     startIcon={
-                      <ChecksvgIcon
+                      <CheckSvgIcon
                         className={classNames(projectcss.all, sty.svg__yqSda)}
                         role={"img"}
                       />
@@ -404,10 +435,6 @@ function PlasmicDeploy__RenderFunc(props: {
               <DataCtxReader__>{$ctx => "Error fetching data"}</DataCtxReader__>
             }
             errorName={"fetchError"}
-            headers={{
-              "Content-Type": "application/json",
-              Accept: "application/json"
-            }}
             loadingDisplay={
               <DataCtxReader__>
                 {$ctx => (
@@ -459,7 +486,7 @@ function PlasmicDeploy__RenderFunc(props: {
                           e?.plasmicType === "PlasmicUndefinedDataError"
                         ) {
                           return {
-                            src: "/plasmic/app_store/images/appIconjpg.jpg",
+                            src: "/plasmic/app_store/images/appIconJpg.jpg",
                             fullWidth: 360,
                             fullHeight: 360,
                             aspectRatio: undefined
@@ -471,6 +498,95 @@ function PlasmicDeploy__RenderFunc(props: {
                     width={"100"}
                   />
 
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__zqUx
+                    )}
+                  >
+                    {
+                      "\u06a9\u062f \u0644\u0627\u06cc\u0633\u0646\u0633 \u062e\u0631\u06cc\u062f\u0627\u0631\u06cc \u0634\u062f\u0647 "
+                    }
+                  </div>
+                  {(() => {
+                    try {
+                      return $ctx.params.required_license == "true";
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
+                      }
+                      throw e;
+                    }
+                  })()
+                    ? (() => {
+                        const child$Props = {
+                          className: classNames(
+                            "__wab_instance",
+                            sty.textlicense
+                          ),
+                          onChange: async (...eventArgs: any) => {
+                            ((...eventArgs) => {
+                              generateStateOnChangeProp($state, [
+                                "textlicense",
+                                "value"
+                              ])((e => e.target?.value).apply(null, eventArgs));
+                            }).apply(null, eventArgs);
+
+                            if (
+                              eventArgs.length > 1 &&
+                              eventArgs[1] &&
+                              eventArgs[1]._plasmic_state_init_
+                            ) {
+                              return;
+                            }
+                          },
+                          placeholder: "Enter your license key\u2026",
+                          value:
+                            generateStateValueProp($state, [
+                              "textlicense",
+                              "value"
+                            ]) ?? ""
+                        };
+
+                        initializePlasmicStates(
+                          $state,
+                          [
+                            {
+                              name: "textlicense.value",
+                              initFunc: ({ $props, $state, $queries }) =>
+                                (() => {
+                                  try {
+                                    return $ctx.params.license
+                                      ? $ctx.params.license
+                                      : "";
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
+                                    }
+                                    throw e;
+                                  }
+                                })()
+                            }
+                          ],
+                          []
+                        );
+                        return (
+                          <TextInput
+                            data-plasmic-name={"textlicense"}
+                            data-plasmic-override={overrides.textlicense}
+                            {...child$Props}
+                          />
+                        );
+                      })()
+                    : null}
                   <Stack__
                     as={"div"}
                     hasGap={true}
@@ -493,15 +609,15 @@ function PlasmicDeploy__RenderFunc(props: {
                         }
                       </div>
                       <PlasmicLink__
-                        data-plasmic-name={"httpsappstoredarkubeapphmvrToken"}
+                        data-plasmic-name={"httpsAppstoreDarkubeAppHmvrToken"}
                         data-plasmic-override={
-                          overrides.httpsappstoredarkubeapphmvrToken
+                          overrides.httpsAppstoreDarkubeAppHmvrToken
                         }
                         className={classNames(
                           projectcss.all,
                           projectcss.a,
                           projectcss.__wab_text,
-                          sty.httpsappstoredarkubeapphmvrToken
+                          sty.httpsAppstoreDarkubeAppHmvrToken
                         )}
                         component={Link}
                         href={"https://appstore.darkube.app/hmvr-token"}
@@ -514,10 +630,12 @@ function PlasmicDeploy__RenderFunc(props: {
                       data-plasmic-name={"tokenInput"}
                       data-plasmic-override={overrides.tokenInput}
                       className={classNames("__wab_instance", sty.tokenInput)}
-                      onChange={generateStateOnChangeProp($state, [
-                        "tokenInput",
-                        "value"
-                      ])}
+                      onChange={async (...eventArgs: any) => {
+                        generateStateOnChangeProp($state, [
+                          "tokenInput",
+                          "value"
+                        ]).apply(null, eventArgs);
+                      }}
                       placeholder={``}
                       type={"password"}
                       value={generateStateValueProp($state, [
@@ -642,6 +760,7 @@ function PlasmicDeploy__RenderFunc(props: {
                                   "orgSelect",
                                   "value"
                                 ]).apply(null, eventArgs);
+
                                 (async value => {
                                   const $steps = {};
 
@@ -692,10 +811,12 @@ function PlasmicDeploy__RenderFunc(props: {
                                   }
                                 }).apply(null, eventArgs);
                               }}
-                              onOpenChange={generateStateOnChangeProp($state, [
-                                "orgSelect",
-                                "open"
-                              ])}
+                              onOpenChange={async (...eventArgs: any) => {
+                                generateStateOnChangeProp($state, [
+                                  "orgSelect",
+                                  "open"
+                                ]).apply(null, eventArgs);
+                              }}
                               open={generateStateValueProp($state, [
                                 "orgSelect",
                                 "open"
@@ -854,14 +975,18 @@ function PlasmicDeploy__RenderFunc(props: {
                             <Select
                               data-plasmic-name={"zoneSelect"}
                               data-plasmic-override={overrides.zoneSelect}
-                              onChange={generateStateOnChangeProp($state, [
-                                "zoneSelect",
-                                "value"
-                              ])}
-                              onOpenChange={generateStateOnChangeProp($state, [
-                                "zoneSelect",
-                                "open"
-                              ])}
+                              onChange={async (...eventArgs: any) => {
+                                generateStateOnChangeProp($state, [
+                                  "zoneSelect",
+                                  "value"
+                                ]).apply(null, eventArgs);
+                              }}
+                              onOpenChange={async (...eventArgs: any) => {
+                                generateStateOnChangeProp($state, [
+                                  "zoneSelect",
+                                  "open"
+                                ]).apply(null, eventArgs);
+                              }}
                               open={generateStateValueProp($state, [
                                 "zoneSelect",
                                 "open"
@@ -997,14 +1122,18 @@ function PlasmicDeploy__RenderFunc(props: {
                             <Select
                               data-plasmic-name={"nameSpaceSelect"}
                               data-plasmic-override={overrides.nameSpaceSelect}
-                              onChange={generateStateOnChangeProp($state, [
-                                "nameSpaceSelect",
-                                "value"
-                              ])}
-                              onOpenChange={generateStateOnChangeProp($state, [
-                                "nameSpaceSelect",
-                                "open"
-                              ])}
+                              onChange={async (...eventArgs: any) => {
+                                generateStateOnChangeProp($state, [
+                                  "nameSpaceSelect",
+                                  "value"
+                                ]).apply(null, eventArgs);
+                              }}
+                              onOpenChange={async (...eventArgs: any) => {
+                                generateStateOnChangeProp($state, [
+                                  "nameSpaceSelect",
+                                  "open"
+                                ]).apply(null, eventArgs);
+                              }}
                               open={generateStateValueProp($state, [
                                 "nameSpaceSelect",
                                 "open"
@@ -1079,10 +1208,12 @@ function PlasmicDeploy__RenderFunc(props: {
                           "__wab_instance",
                           sty.appNameInput
                         )}
-                        onChange={generateStateOnChangeProp($state, [
-                          "appNameInput",
-                          "value"
-                        ])}
+                        onChange={async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "appNameInput",
+                            "value"
+                          ]).apply(null, eventArgs);
+                        }}
                         placeholder={"\u0646\u0627\u0645 \u0627\u067e"}
                         type={"text"}
                         value={generateStateValueProp($state, [
@@ -1131,10 +1262,12 @@ function PlasmicDeploy__RenderFunc(props: {
                           "__wab_instance",
                           sty.domainInput
                         )}
-                        onChange={generateStateOnChangeProp($state, [
-                          "domainInput",
-                          "value"
-                        ])}
+                        onChange={async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "domainInput",
+                            "value"
+                          ]).apply(null, eventArgs);
+                        }}
                         placeholder={
                           "\u0646\u0627\u0645 \u0632\u06cc\u0631 \u062f\u0627\u0645\u0646\u0647"
                         }
@@ -1395,7 +1528,10 @@ function PlasmicDeploy__RenderFunc(props: {
                                       organization_id: $state.orgSelect.value,
                                       namespace_id:
                                         $state.nameSpaceSelect.value,
-                                      domain_name: $state.domainInput.value
+                                      domain_name: $state.domainInput.value,
+                                      license_token: $state.textlicense.value
+                                        ? $state.textlicense.value
+                                        : ""
                                     };
                                   } catch (e) {
                                     if (
@@ -1556,7 +1692,8 @@ const PlasmicDescendants = {
     "img",
     "appCatalogFetcher",
     "appImage",
-    "httpsappstoredarkubeapphmvrToken",
+    "textlicense",
+    "httpsAppstoreDarkubeAppHmvrToken",
     "tokenInput",
     "orgFetcher",
     "orgSelect",
@@ -1574,7 +1711,8 @@ const PlasmicDescendants = {
   appCatalogFetcher: [
     "appCatalogFetcher",
     "appImage",
-    "httpsappstoredarkubeapphmvrToken",
+    "textlicense",
+    "httpsAppstoreDarkubeAppHmvrToken",
     "tokenInput",
     "orgFetcher",
     "orgSelect",
@@ -1589,7 +1727,8 @@ const PlasmicDescendants = {
     "installButton"
   ],
   appImage: ["appImage"],
-  httpsappstoredarkubeapphmvrToken: ["httpsappstoredarkubeapphmvrToken"],
+  textlicense: ["textlicense"],
+  httpsAppstoreDarkubeAppHmvrToken: ["httpsAppstoreDarkubeAppHmvrToken"],
   tokenInput: ["tokenInput"],
   orgFetcher: ["orgFetcher", "orgSelect"],
   orgSelect: ["orgSelect"],
@@ -1611,7 +1750,8 @@ type NodeDefaultElementType = {
   img: typeof PlasmicImg__;
   appCatalogFetcher: typeof DataFetcher;
   appImage: typeof PlasmicImg__;
-  httpsappstoredarkubeapphmvrToken: "a";
+  textlicense: typeof TextInput;
+  httpsAppstoreDarkubeAppHmvrToken: "a";
   tokenInput: typeof Input;
   orgFetcher: typeof DataFetcher;
   orgSelect: typeof Select;
@@ -1689,8 +1829,9 @@ export const PlasmicDeploy = Object.assign(
     img: makeNodeComponent("img"),
     appCatalogFetcher: makeNodeComponent("appCatalogFetcher"),
     appImage: makeNodeComponent("appImage"),
-    httpsappstoredarkubeapphmvrToken: makeNodeComponent(
-      "httpsappstoredarkubeapphmvrToken"
+    textlicense: makeNodeComponent("textlicense"),
+    httpsAppstoreDarkubeAppHmvrToken: makeNodeComponent(
+      "httpsAppstoreDarkubeAppHmvrToken"
     ),
     tokenInput: makeNodeComponent("tokenInput"),
     orgFetcher: makeNodeComponent("orgFetcher"),

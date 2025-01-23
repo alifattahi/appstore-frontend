@@ -2,7 +2,7 @@
   display: flex;
   position: relative;
   flex-direction: row;
-  background: #0032ff;
+  background: #232320;
   cursor: pointer;
   transition-property: background;
   transition-duration: 0.1s;
@@ -93,10 +93,10 @@
 .rootcolor_link {
   background: #ffffff00;
 }
-.rootshape_rounded_showStartIcon {
+.rootshowStartIcon_shape_rounded {
   padding-left: 16px;
 }
-.rootshape_rounded_showEndIcon {
+.rootshowEndIcon_shape_rounded {
   padding-right: 16px;
 }
 .rootshape_round_size_compact {
@@ -240,7 +240,7 @@
 .rootcolor_link:active .slotTargetStartIconcolor_link {
   color: #006adc;
 }
-.svg__jEZek {
+.svg___2LX5A {
   position: relative;
   object-fit: cover;
   width: auto;
@@ -470,7 +470,7 @@
 .rootcolor_link:active .slotTargetEndIconcolor_link {
   color: #006adc;
 }
-.svg__isNbq {
+.svg__c9UvU {
   position: relative;
   object-fit: cover;
   width: auto;

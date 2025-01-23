@@ -71,7 +71,7 @@ import projectcss from "./plasmic.module.css"; // plasmic-import: kE2m6SaQqQewvh
 import sty from "./PlasmicAppStoreCatalogue.module.css"; // plasmic-import: 99T2ETSydRuz/css
 
 import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: qoRXrD2yswrp/icon
-import ChecksvgIcon from "./icons/PlasmicIcon__Checksvg"; // plasmic-import: LwBmQ7p7bmsl/icon
+import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: LwBmQ7p7bmsl/icon
 import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: Uv6mWKVW5aWf/icon
 
 createPlasmicElementProxy;
@@ -114,7 +114,16 @@ function PlasmicAppStoreCatalogue__RenderFunc(props: {
 }) {
   const { variants, overrides, forNode } = props;
 
-  const args = React.useMemo(() => Object.assign({}, props.args), [props.args]);
+  const args = React.useMemo(
+    () =>
+      Object.assign(
+        {},
+        Object.fromEntries(
+          Object.entries(props.args).filter(([_, v]) => v !== undefined)
+        )
+      ),
+    [props.args]
+  );
 
   const $props = {
     ...args,
@@ -191,7 +200,7 @@ function PlasmicAppStoreCatalogue__RenderFunc(props: {
                 data-plasmic-name={"button"}
                 data-plasmic-override={overrides.button}
                 className={classNames("__wab_instance", sty.button)}
-                link={`/deploy/${"n8n"}`}
+                link={`/deploy/${"n8n"}/[required_license]`}
               >
                 {"\u0646\u0635\u0628"}
               </Button>

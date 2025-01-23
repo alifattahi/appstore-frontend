@@ -70,7 +70,7 @@ import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plas
 import projectcss from "./plasmic.module.css"; // plasmic-import: kE2m6SaQqQewvhrZdkGhrf/projectcss
 import sty from "./PlasmicAppStoreCatalogue2.module.css"; // plasmic-import: OlNJiXpWhFI6/css
 
-import ChecksvgIcon from "./icons/PlasmicIcon__Checksvg"; // plasmic-import: LwBmQ7p7bmsl/icon
+import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: LwBmQ7p7bmsl/icon
 import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: Uv6mWKVW5aWf/icon
 
 createPlasmicElementProxy;
@@ -111,7 +111,16 @@ function PlasmicAppStoreCatalogue2__RenderFunc(props: {
 }) {
   const { variants, overrides, forNode } = props;
 
-  const args = React.useMemo(() => Object.assign({}, props.args), [props.args]);
+  const args = React.useMemo(
+    () =>
+      Object.assign(
+        {},
+        Object.fromEntries(
+          Object.entries(props.args).filter(([_, v]) => v !== undefined)
+        )
+      ),
+    [props.args]
+  );
 
   const $props = {
     ...args,
@@ -175,10 +184,6 @@ function PlasmicAppStoreCatalogue2__RenderFunc(props: {
               <DataCtxReader__>{$ctx => "Error fetching data"}</DataCtxReader__>
             }
             errorName={"fetchError"}
-            headers={{
-              "Content-Type": "application/json",
-              Accept: "application/json"
-            }}
             loadingDisplay={
               <DataCtxReader__>{$ctx => "Loading..."}</DataCtxReader__>
             }
@@ -305,19 +310,62 @@ function PlasmicAppStoreCatalogue2__RenderFunc(props: {
                               throw e;
                             }
                           })()}
-                          link={`/deploy/${(() => {
-                            try {
-                              return currentItem.value;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return undefined;
-                              }
-                              throw e;
+                          onClick={async event => {
+                            const $steps = {};
+
+                            $steps["goToDeploy"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    destination: `/deploy/${(() => {
+                                      try {
+                                        return currentItem.value;
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return undefined;
+                                        }
+                                        throw e;
+                                      }
+                                    })()}/${(() => {
+                                      try {
+                                        return currentItem.license_required;
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return undefined;
+                                        }
+                                        throw e;
+                                      }
+                                    })()}`
+                                  };
+                                  return (({ destination }) => {
+                                    if (
+                                      typeof destination === "string" &&
+                                      destination.startsWith("#")
+                                    ) {
+                                      document
+                                        .getElementById(destination.substr(1))
+                                        .scrollIntoView({ behavior: "smooth" });
+                                    } else {
+                                      __nextRouter?.push(destination);
+                                    }
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["goToDeploy"] != null &&
+                              typeof $steps["goToDeploy"] === "object" &&
+                              typeof $steps["goToDeploy"].then === "function"
+                            ) {
+                              $steps["goToDeploy"] = await $steps["goToDeploy"];
                             }
-                          })()}`}
+                          }}
                         >
                           {"\u0646\u0635\u0628"}
                         </Button>

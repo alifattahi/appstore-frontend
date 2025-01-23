@@ -1,0 +1,293 @@
+.root {
+  display: grid;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  align-content: flex-start;
+  justify-items: center;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+  min-height: 0;
+  grid-template-columns:
+    var(--plsmc-viewport-gap) 1fr minmax(0, var(--plsmc-wide-chunk))
+    min(
+      var(--plsmc-standard-width),
+      calc(100% - var(--plsmc-viewport-gap) - var(--plsmc-viewport-gap))
+    )
+    minmax(0, var(--plsmc-wide-chunk)) 1fr var(--plsmc-viewport-gap);
+}
+.root > * {
+  grid-column: 4;
+}
+.freeBox__pFozg {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+  padding: 8px;
+}
+.freeBox__a3IgM {
+  display: flex;
+  flex-direction: column;
+  background: none;
+  width: 100%;
+  position: relative;
+  min-width: 0;
+  padding: 128px 32px;
+}
+.freeBox__a3IgM > :global(.__wab_flex-container) {
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 0;
+  margin-top: calc(0px - 64px);
+  height: calc(100% + 64px);
+}
+.freeBox__a3IgM > :global(.__wab_flex-container) > *,
+.freeBox__a3IgM > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.freeBox__a3IgM > :global(.__wab_flex-container) > picture > img,
+.freeBox__a3IgM
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-top: 64px;
+}
+.freeBox__b1ZWq {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  padding-bottom: 0px;
+}
+.freeBox__b1ZWq > :global(.__wab_flex-container) {
+  flex-direction: column;
+  margin-top: calc(0px - 32px);
+  height: calc(100% + 32px);
+}
+.freeBox__b1ZWq > :global(.__wab_flex-container) > *,
+.freeBox__b1ZWq > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.freeBox__b1ZWq > :global(.__wab_flex-container) > picture > img,
+.freeBox__b1ZWq
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-top: 32px;
+}
+.text__fzZwY {
+  font-size: 60px;
+  font-weight: 800;
+  line-height: 1;
+  text-align: center;
+  font-family: "Vazirmatn", sans-serif;
+  font-style: normal;
+  color: #000000d9;
+  text-transform: none;
+  letter-spacing: normal;
+  white-space: pre-wrap;
+  user-select: text;
+  text-decoration-line: none;
+  pointer-events: auto;
+}
+.text___4Eg59 {
+  font-size: 20px;
+  text-align: center;
+  line-height: 28px;
+  font-family: "Vazirmatn", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #000000d9;
+  text-transform: none;
+  letter-spacing: normal;
+  white-space: pre-wrap;
+  user-select: text;
+  text-decoration-line: none;
+  text-overflow: clip;
+}
+.textInput:global(.__wab_instance) {
+  max-width: 100%;
+  transform: translateX(0px) translateY(0px) translateZ(0px);
+}
+.svg__wjhdZ {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.svg__n2FDl {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.button:global(.__wab_instance) {
+  max-width: 100%;
+}
+.svg___3JrKg {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.text__del8R {
+  color: #ededec;
+}
+.svg__h76OR {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.freeBox__ceCd6 {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+}
+.freeBox__ceCd6 > :global(.__wab_flex-container) {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: calc(0px - 24px);
+  width: calc(100% + 24px);
+}
+.freeBox__ceCd6 > :global(.__wab_flex-container) > *,
+.freeBox__ceCd6 > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.freeBox__ceCd6 > :global(.__wab_flex-container) > picture > img,
+.freeBox__ceCd6
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-left: 24px;
+}
+.ariaButton:global(.__wab_instance) {
+  position: relative;
+  background: #00a33ed9;
+  display: flex;
+  cursor: pointer;
+  box-sizing: border-box;
+  min-width: 0.5rem;
+  font-family: "Vazirmatn", sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  outline-style: none;
+  text-decoration-line: none;
+  max-width: 100%;
+  border-radius: 0.375rem;
+  padding: 0rem;
+  border-width: 0px;
+}
+.softBackground {
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  background: #dbeafe;
+  border-radius: 0.375rem;
+}
+.border {
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  border-radius: 0.375rem;
+  border: 0px solid #93c5fd;
+}
+.interactionEffect {
+  display: block;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  border-radius: 0.375rem;
+}
+.freeBox___0Ad4T {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  padding: 0.5rem 0.625rem;
+}
+.freeBox___0Ad4T > :global(.__wab_flex-container) {
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+  min-height: 0;
+  margin-left: calc(0px - 0.375rem);
+  width: calc(100% + 0.375rem);
+}
+.freeBox___0Ad4T > :global(.__wab_flex-container) > *,
+.freeBox___0Ad4T > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.freeBox___0Ad4T > :global(.__wab_flex-container) > picture > img,
+.freeBox___0Ad4T
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-left: 0.375rem;
+}
+.freeBox__tDdg5 {
+  flex-direction: column;
+  flex-shrink: 0;
+  display: none;
+}
+.svg__o98Uj {
+  position: relative;
+  color: #eff6ff;
+  height: 1em;
+  flex-shrink: 0;
+}
+.text__wuo4E {
+  white-space: pre;
+  color: #eff6ff;
+  font-family: "Vazirmatn", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  text-align: left;
+  text-transform: none;
+  line-height: 1;
+  letter-spacing: normal;
+  user-select: text;
+  text-decoration-line: none;
+  text-overflow: clip;
+}
+.freeBox__tmrhB {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+.svg__ujNt4 {
+  position: relative;
+  color: #eff6ff;
+  height: 1em;
+  flex-shrink: 0;
+}
+.link {
+  color: #000000d9;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  text-align: left;
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre-wrap;
+  user-select: text;
+  text-decoration-line: none;
+  text-overflow: clip;
+}

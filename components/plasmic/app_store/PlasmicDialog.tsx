@@ -72,7 +72,7 @@ import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plas
 import projectcss from "./plasmic.module.css"; // plasmic-import: kE2m6SaQqQewvhrZdkGhrf/projectcss
 import sty from "./PlasmicDialog.module.css"; // plasmic-import: Rg0Kch9kxMIp/css
 
-import ChecksvgIcon from "./icons/PlasmicIcon__Checksvg"; // plasmic-import: LwBmQ7p7bmsl/icon
+import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: LwBmQ7p7bmsl/icon
 import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: Uv6mWKVW5aWf/icon
 
 createPlasmicElementProxy;
@@ -140,7 +140,16 @@ function PlasmicDialog__RenderFunc(props: {
 }) {
   const { variants, overrides, forNode } = props;
 
-  const args = React.useMemo(() => Object.assign({}, props.args), [props.args]);
+  const args = React.useMemo(
+    () =>
+      Object.assign(
+        {},
+        Object.fromEntries(
+          Object.entries(props.args).filter(([_, v]) => v !== undefined)
+        )
+      ),
+    [props.args]
+  );
 
   const $props = {
     ...args,
@@ -196,7 +205,12 @@ function PlasmicDialog__RenderFunc(props: {
         { [sty.dialognoTrigger]: hasVariant($state, "noTrigger", "noTrigger") }
       )}
       defaultOpen={false}
-      onOpenChange={generateStateOnChangeProp($state, ["dialog", "open"])}
+      onOpenChange={async (...eventArgs: any) => {
+        generateStateOnChangeProp($state, ["dialog", "open"]).apply(
+          null,
+          eventArgs
+        );
+      }}
       open={generateStateValueProp($state, ["dialog", "open"])}
       overlayClassName={classNames({ [sty["pcls_dZd6D3YI1R0b"]]: true })}
       themeResetClass={classNames(

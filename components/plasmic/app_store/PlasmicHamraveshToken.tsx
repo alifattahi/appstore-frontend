@@ -80,7 +80,7 @@ export const PlasmicHamraveshToken__ArgProps = new Array<ArgPropType>();
 export type PlasmicHamraveshToken__OverridesType = {
   hamraveshToken?: Flex__<"div">;
   freeBox?: Flex__<"div">;
-  httpsconsolehamraveshcomprofileapiKeys?: Flex__<"a"> & Partial<LinkProps>;
+  httpsConsoleHamraveshComProfileApiKeys?: Flex__<"a"> & Partial<LinkProps>;
 };
 
 export interface DefaultHamraveshTokenProps {}
@@ -102,7 +102,16 @@ function PlasmicHamraveshToken__RenderFunc(props: {
 }) {
   const { variants, overrides, forNode } = props;
 
-  const args = React.useMemo(() => Object.assign({}, props.args), [props.args]);
+  const args = React.useMemo(
+    () =>
+      Object.assign(
+        {},
+        Object.fromEntries(
+          Object.entries(props.args).filter(([_, v]) => v !== undefined)
+        )
+      ),
+    [props.args]
+  );
 
   const $props = {
     ...args,
@@ -201,15 +210,15 @@ function PlasmicHamraveshToken__RenderFunc(props: {
               }
             </div>
             <PlasmicLink__
-              data-plasmic-name={"httpsconsolehamraveshcomprofileapiKeys"}
+              data-plasmic-name={"httpsConsoleHamraveshComProfileApiKeys"}
               data-plasmic-override={
-                overrides.httpsconsolehamraveshcomprofileapiKeys
+                overrides.httpsConsoleHamraveshComProfileApiKeys
               }
               className={classNames(
                 projectcss.all,
                 projectcss.a,
                 projectcss.__wab_text,
-                sty.httpsconsolehamraveshcomprofileapiKeys
+                sty.httpsConsoleHamraveshComProfileApiKeys
               )}
               component={Link}
               href={"https://console.hamravesh.com/profile/api-keys"}
@@ -295,11 +304,11 @@ const PlasmicDescendants = {
   hamraveshToken: [
     "hamraveshToken",
     "freeBox",
-    "httpsconsolehamraveshcomprofileapiKeys"
+    "httpsConsoleHamraveshComProfileApiKeys"
   ],
-  freeBox: ["freeBox", "httpsconsolehamraveshcomprofileapiKeys"],
-  httpsconsolehamraveshcomprofileapiKeys: [
-    "httpsconsolehamraveshcomprofileapiKeys"
+  freeBox: ["freeBox", "httpsConsoleHamraveshComProfileApiKeys"],
+  httpsConsoleHamraveshComProfileApiKeys: [
+    "httpsConsoleHamraveshComProfileApiKeys"
   ]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -308,7 +317,7 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   hamraveshToken: "div";
   freeBox: "div";
-  httpsconsolehamraveshcomprofileapiKeys: "a";
+  httpsConsoleHamraveshComProfileApiKeys: "a";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -372,8 +381,8 @@ export const PlasmicHamraveshToken = Object.assign(
   {
     // Helper components rendering sub-elements
     freeBox: makeNodeComponent("freeBox"),
-    httpsconsolehamraveshcomprofileapiKeys: makeNodeComponent(
-      "httpsconsolehamraveshcomprofileapiKeys"
+    httpsConsoleHamraveshComProfileApiKeys: makeNodeComponent(
+      "httpsConsoleHamraveshComProfileApiKeys"
     ),
 
     // Metadata about props expected for PlasmicHamraveshToken
