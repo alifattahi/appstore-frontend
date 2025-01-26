@@ -89,7 +89,7 @@ export const PlasmicShowLicense__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicShowLicense__OverridesType = {
   root?: Flex__<"div">;
-  textInput?: Flex__<typeof TextInput>;
+  inputLicenseTOken?: Flex__<typeof TextInput>;
   button?: Flex__<typeof Button>;
   ariaButton?: Flex__<typeof BaseButton>;
   softBackground?: Flex__<"div">;
@@ -141,7 +141,7 @@ function PlasmicShowLicense__RenderFunc(props: {
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
-        path: "textInput.value",
+        path: "inputLicenseTOken.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
@@ -160,6 +160,12 @@ function PlasmicShowLicense__RenderFunc(props: {
               throw e;
             }
           })()
+      },
+      {
+        path: "licenseToken",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ``
       }
     ],
     [$props, $ctx, $refs]
@@ -254,13 +260,16 @@ function PlasmicShowLicense__RenderFunc(props: {
                 {(() => {
                   const child$Props = {
                     autoFocus: true,
-                    className: classNames("__wab_instance", sty.textInput),
+                    className: classNames(
+                      "__wab_instance",
+                      sty.inputLicenseTOken
+                    ),
                     isDisabled: true,
                     name: "license",
                     onChange: async (...eventArgs: any) => {
                       ((...eventArgs) => {
                         generateStateOnChangeProp($state, [
-                          "textInput",
+                          "inputLicenseTOken",
                           "value"
                         ])((e => e.target?.value).apply(null, eventArgs));
                       }).apply(null, eventArgs);
@@ -272,18 +281,59 @@ function PlasmicShowLicense__RenderFunc(props: {
                       ) {
                         return;
                       }
+
+                      (async event => {
+                        const $steps = {};
+
+                        $steps["updateVariable"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["licenseToken"]
+                                },
+                                operation: 0
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateVariable"] != null &&
+                          typeof $steps["updateVariable"] === "object" &&
+                          typeof $steps["updateVariable"].then === "function"
+                        ) {
+                          $steps["updateVariable"] = await $steps[
+                            "updateVariable"
+                          ];
+                        }
+                      }).apply(null, eventArgs);
                     },
                     type: "text",
                     value:
-                      generateStateValueProp($state, ["textInput", "value"]) ??
-                      ""
+                      generateStateValueProp($state, [
+                        "inputLicenseTOken",
+                        "value"
+                      ]) ?? ""
                   };
 
                   initializePlasmicStates(
                     $state,
                     [
                       {
-                        name: "textInput.value",
+                        name: "inputLicenseTOken.value",
                         initFunc: ({ $props, $state, $queries }) =>
                           (() => {
                             try {
@@ -306,8 +356,8 @@ function PlasmicShowLicense__RenderFunc(props: {
                   );
                   return (
                     <TextInput
-                      data-plasmic-name={"textInput"}
-                      data-plasmic-override={overrides.textInput}
+                      data-plasmic-name={"inputLicenseTOken"}
+                      data-plasmic-override={overrides.inputLicenseTOken}
                       {...child$Props}
                     />
                   );
@@ -357,7 +407,13 @@ function PlasmicShowLicense__RenderFunc(props: {
                                 }
                               })()}/${(() => {
                                 try {
-                                  return $ctx.params.required_license;
+                                  return (
+                                    $ctx.params.required_license +
+                                    "?license_token=" +
+                                    ($ctx.params.license_token
+                                      ? $ctx.params.license_token
+                                      : "")
+                                  );
                                 } catch (e) {
                                   if (
                                     e instanceof TypeError ||
@@ -489,7 +545,7 @@ function PlasmicShowLicense__RenderFunc(props: {
 const PlasmicDescendants = {
   root: [
     "root",
-    "textInput",
+    "inputLicenseTOken",
     "button",
     "ariaButton",
     "softBackground",
@@ -497,7 +553,7 @@ const PlasmicDescendants = {
     "interactionEffect",
     "link"
   ],
-  textInput: ["textInput"],
+  inputLicenseTOken: ["inputLicenseTOken"],
   button: ["button"],
   ariaButton: ["ariaButton", "softBackground", "border", "interactionEffect"],
   softBackground: ["softBackground"],
@@ -510,7 +566,7 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
-  textInput: typeof TextInput;
+  inputLicenseTOken: typeof TextInput;
   button: typeof Button;
   ariaButton: typeof BaseButton;
   softBackground: "div";
@@ -579,7 +635,7 @@ export const PlasmicShowLicense = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    textInput: makeNodeComponent("textInput"),
+    inputLicenseTOken: makeNodeComponent("inputLicenseTOken"),
     button: makeNodeComponent("button"),
     ariaButton: makeNodeComponent("ariaButton"),
     softBackground: makeNodeComponent("softBackground"),

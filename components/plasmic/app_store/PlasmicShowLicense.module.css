@@ -111,7 +111,7 @@
   text-decoration-line: none;
   text-overflow: clip;
 }
-.textInput:global(.__wab_instance) {
+.inputLicenseTOken:global(.__wab_instance) {
   max-width: 100%;
   transform: translateX(0px) translateY(0px) translateZ(0px);
 }

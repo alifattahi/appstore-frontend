@@ -238,19 +238,9 @@ function PlasmicDeploy__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          (() => {
-            try {
-              return $ctx.query.license ? $ctx.query.license : "";
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return undefined;
-              }
-              throw e;
-            }
-          })()
+          `${$ctx.params.license_token ? $ctx.params.license_token : ""}${
+            $ctx.params.license_token ? $ctx.params.license_token : ""
+          }`
       }
     ],
     [$props, $ctx, $refs]
@@ -571,22 +561,15 @@ function PlasmicDeploy__RenderFunc(props: {
                             {
                               name: "textlicense.value",
                               initFunc: ({ $props, $state, $queries }) =>
-                                (() => {
-                                  try {
-                                    return $ctx.query.license
-                                      ? $ctx.query.license
-                                      : "";
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return undefined;
-                                    }
-                                    throw e;
-                                  }
-                                })()
+                                `${
+                                  $ctx.params.license_token
+                                    ? $ctx.params.license_token
+                                    : ""
+                                }${
+                                  $ctx.params.license_token
+                                    ? $ctx.params.license_token
+                                    : ""
+                                }`
                             }
                           ],
                           []
