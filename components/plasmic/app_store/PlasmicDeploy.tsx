@@ -238,11 +238,19 @@ function PlasmicDeploy__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          `${
-            $ctx.params.license_token !== undefined
-              ? $ctx.params.license_token
-              : ""
-          }${$ctx.params.license_token ? $ctx.params.license_token : ""}`
+          (() => {
+            try {
+              return $ctx.params.license_token;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -563,15 +571,20 @@ function PlasmicDeploy__RenderFunc(props: {
                             {
                               name: "textlicense.value",
                               initFunc: ({ $props, $state, $queries }) =>
-                                `${
-                                  $ctx.params.license_token !== undefined
-                                    ? $ctx.params.license_token
-                                    : ""
-                                }${
-                                  $ctx.params.license_token
-                                    ? $ctx.params.license_token
-                                    : ""
-                                }`
+                                (() => {
+                                  try {
+                                    return $ctx.params.license_token;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
+                                    }
+                                    throw e;
+                                  }
+                                })()
                             }
                           ],
                           []
