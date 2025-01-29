@@ -1522,7 +1522,7 @@ function PlasmicDeploy__RenderFunc(props: {
                         ];
                       }
 
-                      $steps["sendـrequest"] = true
+                      $steps["sendRequest"] = true
                         ? (() => {
                             const actionArgs = {
                               args: [
@@ -1595,11 +1595,11 @@ function PlasmicDeploy__RenderFunc(props: {
                           })()
                         : undefined;
                       if (
-                        $steps["sendـrequest"] != null &&
-                        typeof $steps["sendـrequest"] === "object" &&
-                        typeof $steps["sendـrequest"].then === "function"
+                        $steps["sendRequest"] != null &&
+                        typeof $steps["sendRequest"] === "object" &&
+                        typeof $steps["sendRequest"].then === "function"
                       ) {
-                        $steps["sendـrequest"] = await $steps["sendـrequest"];
+                        $steps["sendRequest"] = await $steps["sendRequest"];
                       }
 
                       $steps["toast"] = true
@@ -1608,7 +1608,7 @@ function PlasmicDeploy__RenderFunc(props: {
                               args: [
                                 (() => {
                                   try {
-                                    return $steps.send_request.status == "200"
+                                    return $steps.sendRequest.status === 200
                                       ? "success"
                                       : "error";
                                   } catch (e) {
@@ -1624,9 +1624,9 @@ function PlasmicDeploy__RenderFunc(props: {
                                 })(),
                                 (() => {
                                   try {
-                                    return $steps.send_request.status == "200"
+                                    return $steps.sendRequest.status === 200
                                       ? "مراحل نصب شروع شد. لطفا دقایقی دیگر به آدرس دامنه خود مراجعه کنید و همچنین در کنسول هم‌روش میتوانید وضعیت اسقرار را مشاهده نمایید."
-                                      : $steps.send_request.data.message_fa;
+                                      : $steps.sendRequest.data.message_fa;
                                   } catch (e) {
                                     if (
                                       e instanceof TypeError ||
