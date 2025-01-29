@@ -558,6 +558,19 @@ function PlasmicDeploy__RenderFunc(props: {
                             }
                           },
                           placeholder: "Enter your license key\u2026",
+                          required: (() => {
+                            try {
+                              return $ctx.params.required_license == "true";
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return true;
+                              }
+                              throw e;
+                            }
+                          })(),
                           value:
                             generateStateValueProp($state, [
                               "textlicense",
