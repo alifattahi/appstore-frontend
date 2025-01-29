@@ -1522,7 +1522,7 @@ function PlasmicDeploy__RenderFunc(props: {
                         ];
                       }
 
-                      $steps["sendRequest"] = true
+                      $steps["sendـrequest"] = true
                         ? (() => {
                             const actionArgs = {
                               args: [
@@ -1595,19 +1595,49 @@ function PlasmicDeploy__RenderFunc(props: {
                           })()
                         : undefined;
                       if (
-                        $steps["sendRequest"] != null &&
-                        typeof $steps["sendRequest"] === "object" &&
-                        typeof $steps["sendRequest"].then === "function"
+                        $steps["sendـrequest"] != null &&
+                        typeof $steps["sendـrequest"] === "object" &&
+                        typeof $steps["sendـrequest"].then === "function"
                       ) {
-                        $steps["sendRequest"] = await $steps["sendRequest"];
+                        $steps["sendـrequest"] = await $steps["sendـrequest"];
                       }
 
                       $steps["toast"] = true
                         ? (() => {
                             const actionArgs = {
                               args: [
-                                undefined,
-                                "\u0645\u0631\u0627\u062d\u0644 \u0646\u0635\u0628 \u0634\u0631\u0648\u0639 \u0634\u062f. \u0644\u0637\u0641\u0627 \u062f\u0642\u0627\u06cc\u0642\u06cc \u062f\u06cc\u06af\u0631 \u0628\u0647 \u0622\u062f\u0631\u0633 \u062f\u0627\u0645\u0646\u0647 \u062e\u0648\u062f \u0645\u0631\u0627\u062c\u0639\u0647 \u06a9\u0646\u06cc\u062f \u0648 \u0647\u0645\u0686\u0646\u06cc\u0646 \u062f\u0631 \u06a9\u0646\u0633\u0648\u0644 \u0647\u0645\u200c\u0631\u0648\u0634 \u0645\u06cc\u062a\u0648\u0627\u0646\u06cc\u062f \u0648\u0636\u0639\u06cc\u062a \u0627\u0633\u0642\u0631\u0627\u0631 \u0631\u0627 \u0645\u0634\u0627\u0647\u062f\u0647 \u0646\u0645\u0627\u06cc\u06cc\u062f.",
+                                (() => {
+                                  try {
+                                    return $steps.send_request.status == "200"
+                                      ? "success"
+                                      : "error";
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
+                                    }
+                                    throw e;
+                                  }
+                                })(),
+                                (() => {
+                                  try {
+                                    return $steps.send_request.status == "200"
+                                      ? "مراحل نصب شروع شد. لطفا دقایقی دیگر به آدرس دامنه خود مراجعه کنید و همچنین در کنسول هم‌روش میتوانید وضعیت اسقرار را مشاهده نمایید."
+                                      : $steps.send_request.data.message_fa;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
+                                    }
+                                    throw e;
+                                  }
+                                })(),
                                 "top-center",
                                 10000
                               ]
